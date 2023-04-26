@@ -1,0 +1,13 @@
+.container {
+  padding-top: 40px;
+  max-width: 600px;
+}
+.title {
+  margin-bottom: 20px;
+  text-align: start;
+}
+
+.nav {
+  display: flex;
+  margin-bottom: 40px;
+}
