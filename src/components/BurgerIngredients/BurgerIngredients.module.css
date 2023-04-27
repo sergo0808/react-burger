@@ -1,7 +1,8 @@
-.container {
+.section {
   padding-top: 40px;
-  max-width: 600px;
+  max-width: 601px;
 }
+
 .title {
   margin-bottom: 20px;
   text-align: start;
@@ -10,4 +11,66 @@
 .nav {
   display: flex;
   margin-bottom: 40px;
+}
+
+.lists {
+  margin: 0;
+  margin-bottom: 24px;
+  padding: 0;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  height: 912px;
+  list-style-type: none;
+  text-align: start;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.lists::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lists::-webkit-scrollbar-track {
+  background-color: #2f2f37;
+}
+
+.lists::-webkit-scrollbar-thumb {
+  background-color: #6969dd;
+}
+
+.burger {
+  width: 272px;
+  position: relative;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.burgerContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  row-gap: 32px;
+  margin-bottom: 40px;
+}
+
+.burgerImage {
+  width: 240px;
+  height: 120px;
+  align-self: center;
+  margin-bottom: 7px;
+}
+.burgerName {
+  text-align: center;
+  height: 48px;
+}
+
+.priceGroup {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
 }

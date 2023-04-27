@@ -1,13 +1,13 @@
 .header {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 1280px;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .list_links {
@@ -25,6 +25,11 @@
   text-decoration: none;
   color: #8585ad;
   cursor: pointer;
+  transition: 0.5s;
+}
+
+.link:hover {
+  color: white;
 }
 
 .active {

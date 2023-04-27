@@ -1,10 +1,13 @@
 import React from "react";
 import BurgerIngredientsStyles from "./BurgerIngredients.module.css";
-import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
+import { Tab, CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
+
+import { data } from "../../utils/data";
 
 const BurgerIngredients = () => {
+  console.log(data);
   return (
-    <article className={BurgerIngredientsStyles.container}>
+    <section className={BurgerIngredientsStyles.section}>
       <h2 className={`${BurgerIngredientsStyles.title} text text_type_main-large`}>
         Соберите бургер
       </h2>
@@ -13,18 +16,82 @@ const BurgerIngredients = () => {
         <Tab value="two">Соусы</Tab>
         <Tab value="three">Начинки</Tab>
       </nav>
-      <ul>
-        <li>
-          <h3 className="text text_type_main-medium">Булки</h3>
+      <ul className={BurgerIngredientsStyles.lists}>
+        <li className={BurgerIngredientsStyles.list}>
+          <h3 className="text text_type_main-medium mb-6">Булки</h3>
+          <div className={BurgerIngredientsStyles.burgerContainer}>
+            {data
+              .filter((item) => item.type === "bun")
+              .map((item) => (
+                <div className={BurgerIngredientsStyles.burger} key={item._id}>
+                  <Counter count={1} size="default" />
+                  <img
+                    className={BurgerIngredientsStyles.burgerImage}
+                    alt="бургер картинка"
+                    src={item.image}
+                  />
+                  <div className={BurgerIngredientsStyles.priceGroup}>
+                    <p className="text text_type_digits-default">{item.price}</p>
+                    <CurrencyIcon type="primary" />
+                  </div>
+                  <p
+                    className={`${BurgerIngredientsStyles.burgerName} text text_type_main-default`}>
+                    {item.name}
+                  </p>
+                </div>
+              ))}
+          </div>
         </li>
         <li>
-          <h3 className="text text_type_main-medium">Соусы</h3>
+          <h3 className="text text_type_main-medium mb-6">Соусы</h3>
+          <div className={BurgerIngredientsStyles.burgerContainer}>
+            {data
+              .filter((item) => item.type === "sauce")
+              .map((item) => (
+                <div className={BurgerIngredientsStyles.burger} key={item._id}>
+                  <img
+                    className={BurgerIngredientsStyles.burgerImage}
+                    alt="бургер картинка"
+                    src={item.image}
+                  />
+                  <div className={BurgerIngredientsStyles.priceGroup}>
+                    <p className="text text_type_digits-default">{item.price}</p>
+                    <CurrencyIcon type="primary" />
+                  </div>
+                  <p
+                    className={`${BurgerIngredientsStyles.burgerName} text text_type_main-default`}>
+                    {item.name}
+                  </p>
+                </div>
+              ))}
+          </div>
         </li>
         <li>
-          <h3 className="text text_type_main-medium">Начинки</h3>
+          <h3 className="text text_type_main-medium mb-6">Начинки</h3>
+          <div className={BurgerIngredientsStyles.burgerContainer}>
+            {data
+              .filter((item) => item.type === "main")
+              .map((item) => (
+                <div className={BurgerIngredientsStyles.burger} key={item._id}>
+                  <img
+                    className={BurgerIngredientsStyles.burgerImage}
+                    alt="бургер картинка"
+                    src={item.image}
+                  />
+                  <div className={BurgerIngredientsStyles.priceGroup}>
+                    <p className="text text_type_digits-default">{item.price}</p>
+                    <CurrencyIcon type="primary" />
+                  </div>
+                  <p
+                    className={`${BurgerIngredientsStyles.burgerName} text text_type_main-default`}>
+                    {item.name}
+                  </p>
+                </div>
+              ))}
+          </div>
         </li>
       </ul>
-    </article>
+    </section>
   );
 };
 

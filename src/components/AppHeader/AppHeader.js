@@ -18,7 +18,7 @@ const AppHeader = () => {
             <BurgerIcon></BurgerIcon>
             <p className="text text_type_main-default">Конструктор</p>
           </NavLink>
-          <NavLink className={`${AppHeaderStyles.link} p-4`}>
+          <NavLink to="/constructor" className={`${AppHeaderStyles.link} p-4`}>
             <ListIcon></ListIcon>
             <p className="text text_type_main-default">Лента заказов</p>
           </NavLink>
@@ -26,8 +26,7 @@ const AppHeader = () => {
         <div className={AppHeaderStyles.logo}>
           <Logo />
         </div>
-
-        <NavLink className={`${AppHeaderStyles.link} p-4`}>
+        <NavLink to="/profile" className={`${AppHeaderStyles.link} p-4`}>
           <ProfileIcon></ProfileIcon>
           <p className="text text_type_main-default">Личный кабинет</p>
         </NavLink>
