@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import BurgerConstructorStyles from "./BurgerConstructor.module.css";
 import { data } from "../../utils/data";
 import Subtract from "../../images/Subtract.svg";
@@ -27,7 +28,7 @@ const BurgerConstructor = () => {
       <div className={BurgerConstructorStyles.info}>
         <div className={BurgerConstructorStyles.priceGroup}>
           <p className="text text_type_digits-medium">610</p>
-          <img src={Subtract} />
+          <img src={Subtract} alt="картинка кристала" />
         </div>
         <Button htmlType="button" type="primary" size="large">
           Оформить заказ
@@ -35,6 +36,11 @@ const BurgerConstructor = () => {
       </div>
     </section>
   );
+};
+
+BurgerConstructorStyles.propTypes = {
+  _id: PropTypes.number,
+  name: PropTypes.string,
 };
 
 export default BurgerConstructor;

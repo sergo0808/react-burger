@@ -1,11 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import BurgerIngredientsStyles from "./BurgerIngredients.module.css";
 import { Tab, CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import { data } from "../../utils/data";
 
 const BurgerIngredients = () => {
-  console.log(data);
   return (
     <section className={BurgerIngredientsStyles.section}>
       <h2 className={`${BurgerIngredientsStyles.title} text text_type_main-large`}>
@@ -93,6 +93,11 @@ const BurgerIngredients = () => {
       </ul>
     </section>
   );
+};
+
+BurgerIngredients.propTypes = {
+  _id: PropTypes.number,
+  name: PropTypes.string,
 };
 
 export default BurgerIngredients;
