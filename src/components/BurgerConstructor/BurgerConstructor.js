@@ -9,22 +9,44 @@ import {
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
+const firstCard = data[0];
+const defaultCard = data.slice(1, -1);
+const lastCard = data.slice(-1);
+
 const BurgerConstructor = () => {
+  console.log(lastCard);
   return (
     <section className={BurgerConstructorStyles.section}>
+      <div className={`${BurgerConstructorStyles.list} ml-8 mb-4`}>
+        <ConstructorElement
+          type="top"
+          isLocked={true}
+          text={firstCard.name + " (верх)"}
+          price={firstCard.price}
+          thumbnail={firstCard.image}
+        />
+      </div>
+
       <ul className={BurgerConstructorStyles.lists}>
-        {data.map((item, i, arr) => (
+        {defaultCard.map((item, i, arr) => (
           <li className={BurgerConstructorStyles.list} key={item._id}>
             <DragIcon />
-            <ConstructorElement
-              type={i === 0 ? "top" : i === arr.length - 1 ? "bottom" : ""}
-              text={item.name}
-              price={item.price}
-              thumbnail={item.image}
-            />
+            <ConstructorElement text={item.name} price={item.price} thumbnail={item.image} />
           </li>
         ))}
       </ul>
+      <div className={`${BurgerConstructorStyles.list} mb-10`}>
+        <DragIcon />
+        {lastCard.map((item) => (
+          <ConstructorElement
+            type="bottom"
+            isLocked={true}
+            text={item.name + " (низ)"}
+            price={item.price}
+            thumbnail={item.image}
+          />
+        ))}
+      </div>
       <div className={BurgerConstructorStyles.info}>
         <div className={BurgerConstructorStyles.priceGroup}>
           <p className="text text_type_digits-medium">610</p>
@@ -38,7 +60,7 @@ const BurgerConstructor = () => {
   );
 };
 
-BurgerConstructorStyles.propTypes = {
+BurgerConstructor.propTypes = {
   _id: PropTypes.number,
   name: PropTypes.string,
 };
