@@ -1,0 +1,60 @@
+.modal {
+  margin: 0;
+  padding: 40px;
+  padding-bottom: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  position: relative;
+  background-color: #1c1c21;
+  width: 720px;
+  min-height: 539px;
+  border-radius: 40px;
+  box-sizing: border-box;
+}
+
+.close {
+  display: none;
+}
+
+.title {
+  text-align: start;
+  margin-top: 13px;
+  width: 100%;
+}
+
+.closeBtn {
+  color: #f2f2f3;
+  position: absolute;
+  top: 60px;
+  right: 40px;
+  width: 24px;
+  height: 24px;
+
+  cursor: pointer;
+}
+
+.closeBtn:hover {
+  opacity: 1;
+}
+
+.closeBtn::before,
+.closeBtn::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: #f2f2f3;
+}
+
+.closeBtn::before {
+  transform: rotate(45deg);
+}
+
+.closeBtn::after {
+  transform: rotate(-45deg);
+}

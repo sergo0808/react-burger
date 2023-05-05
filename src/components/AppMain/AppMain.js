@@ -3,11 +3,15 @@ import AppMainStyles from "./AppMain.module.css";
 import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 
-const AppMain = () => {
+const AppMain = ({ data }) => {
   return (
     <main className={AppMainStyles.main}>
-      <BurgerIngredients />
-      <BurgerConstructor />
+      {data.length && (
+        <>
+          <BurgerIngredients data={data} />
+          <BurgerConstructor data={data} />
+        </>
+      )}
     </main>
   );
 };

@@ -1,0 +1,21 @@
+.info {
+  flex-direction: column;
+  justify-content: center;
+  width: 520px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lists {
+  margin: 0;
+  padding: 0;
+  max-width: 102px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  list-style-type: none;
+  max-width: 520px;
+  gap: 51px;
+}
