@@ -1,9 +1,7 @@
-import React from "react";
 import IngredientDetailsStyles from "./IngredientDetails.module.css";
 import PropTypes from "prop-types";
 
 const IngredientDetails = ({ title, card }) => {
-  console.log(card);
   if (!card) {
     return null;
   }
@@ -12,7 +10,7 @@ const IngredientDetails = ({ title, card }) => {
     <>
       <h3 className="text text_type_main-large mt-4">{title}</h3>
       <article className={IngredientDetailsStyles.info}>
-        <img src={card.image_large} className="mb-5" />
+        <img src={card.image_large} className="mb-5" alt="фото булки" />
         <p className="text text_type_main-medium mb-8">{card.name}</p>
         <ul className={IngredientDetailsStyles.lists}>
           <li className={IngredientDetailsStyles.list}>

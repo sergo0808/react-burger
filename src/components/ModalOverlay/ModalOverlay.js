@@ -1,11 +1,10 @@
-import React from "react";
 import ModalOverlayStyles from "./ModalOverlay.module.css";
 
-const ModalOverlay = ({ children, isOpen }) => {
+const ModalOverlay = ({ isOpen, onClose }) => {
   return (
-    <div className={`${ModalOverlayStyles.overlay} ${isOpen ? ModalOverlayStyles.opened : ""}`}>
-      {children}
-    </div>
+    <div
+      onClick={onClose}
+      className={`${ModalOverlayStyles.overlay} ${isOpen ? ModalOverlayStyles.opened : ""}`}></div>
   );
 };
 

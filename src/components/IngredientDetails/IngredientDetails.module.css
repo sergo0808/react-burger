@@ -14,7 +14,7 @@
   text-align: center;
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   list-style-type: none;
   max-width: 520px;
   gap: 51px;

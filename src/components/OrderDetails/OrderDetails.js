@@ -1,4 +1,3 @@
-import React from "react";
 import OrderDetailsStyles from "./OrderDetails.module.css";
 import statusButton from "../../images/done.png";
 
@@ -10,7 +9,7 @@ const OrderDetails = () => {
         идентификатор заказа
       </p>
 
-      <img src={statusButton} className={OrderDetailsStyles.image} />
+      <img src={statusButton} className={OrderDetailsStyles.image} alt="кнопка статус" />
 
       <p className="text text_type_main-default mb-3" style={{ textAlign: "center" }}>
         Ваш заказ начали готовить

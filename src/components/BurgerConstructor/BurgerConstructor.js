@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import BurgerConstructorStyles from "./BurgerConstructor.module.css";
@@ -17,7 +16,6 @@ const BurgerConstructor = ({ data }) => {
   const defaultCard = data.slice(1, -1);
 
   const [isModalePopupOpen, setIsModalePopupOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(null);
 
   return (
     <section className={BurgerConstructorStyles.section}>
@@ -65,15 +63,21 @@ const BurgerConstructor = ({ data }) => {
         </Button>
       </div>
       <Modal isOpen={isModalePopupOpen} onClose={() => setIsModalePopupOpen(false)}>
-        <OrderDetails card={selectedCard} />
+        <OrderDetails />
       </Modal>
     </section>
   );
 };
 
 BurgerConstructor.propTypes = {
-  _id: PropTypes.number,
-  name: PropTypes.string,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default BurgerConstructor;
