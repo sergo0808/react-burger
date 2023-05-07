@@ -24,7 +24,7 @@ const BurgerConstructor = ({ data }) => {
         <ConstructorElement
           type="top"
           isLocked={true}
-          text={firstCard.name + " (вверх)"}
+          text={firstCard.name + " (верх)"}
           price={firstCard.price}
           thumbnail={firstCard.image}
         />
