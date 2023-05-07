@@ -8,7 +8,11 @@ function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    getProductData().then((data) => setData(data.data));
+    getProductData()
+      .then((data) => setData(data.data))
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
