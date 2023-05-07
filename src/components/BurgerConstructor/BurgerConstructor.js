@@ -2,6 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import BurgerConstructorStyles from "./BurgerConstructor.module.css";
 import Modal from "../Modal/Modal";
+import { ingredientPropTypes } from "../../utils/types";
 
 import Subtract from "../../images/Subtract.svg";
 import {
@@ -23,7 +24,7 @@ const BurgerConstructor = ({ data }) => {
         <ConstructorElement
           type="top"
           isLocked={true}
-          text={firstCard.name}
+          text={firstCard.name + " (вверх)"}
           price={firstCard.price}
           thumbnail={firstCard.image}
         />
@@ -70,14 +71,7 @@ const BurgerConstructor = ({ data }) => {
 };
 
 BurgerConstructor.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      image: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  data: PropTypes.arrayOf(ingredientPropTypes).isRequired,
 };
 
 export default BurgerConstructor;

@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import AppMainStyles from "./AppMain.module.css";
 import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
+import { ingredientPropTypes } from "../../utils/types";
 
 const AppMain = ({ data }) => {
   return (
@@ -17,14 +18,7 @@ const AppMain = ({ data }) => {
 };
 
 AppMain.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      image: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  data: PropTypes.arrayOf(ingredientPropTypes).isRequired,
 };
 
 export default AppMain;

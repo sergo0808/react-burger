@@ -5,6 +5,7 @@ import { Tab, CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger
 import Modal from "../Modal/Modal";
 import { useState } from "react";
 import IngredientDetails from "../IngredientDetails/IngredientDetails";
+import { ingredientPropTypes } from "../../utils/types";
 
 const BurgerIngredients = ({ data }) => {
   const [current, setCurrent] = React.useState("one");
@@ -125,15 +126,7 @@ const BurgerIngredients = ({ data }) => {
 };
 
 BurgerIngredients.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-    })
-  ).isRequired,
+  data: PropTypes.arrayOf(ingredientPropTypes).isRequired,
 };
 
 export default BurgerIngredients;
