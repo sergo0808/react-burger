@@ -1,10 +1,13 @@
 import OrderDetailsStyles from "./OrderDetails.module.css";
 import statusButton from "../../images/done.png";
+import { useContext } from "react";
+import { orderContext } from "../context/orderContext";
 
 const OrderDetails = () => {
+  const order = useContext(orderContext);
   return (
     <div>
-      <h3 className="text text_type_digits-large mt-20 ml-25 ">034536</h3>
+      <h3 className="text text_type_digits-large mt-20 ml-25 ">{order.number}</h3>
       <p className="text text_type_main-medium mt-8 mb-15 " style={{ textAlign: "center" }}>
         идентификатор заказа
       </p>
