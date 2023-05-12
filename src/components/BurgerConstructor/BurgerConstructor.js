@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useContext, useReducer } from "react";
 import PropTypes from "prop-types";
 import BurgerConstructorStyles from "./BurgerConstructor.module.css";
 import Modal from "../Modal/Modal";
 import { ingredientPropTypes } from "../../utils/types";
-
+import { makeAnOrder } from "../../utils/BurgerApi";
 import Subtract from "../../images/Subtract.svg";
 import {
   ConstructorElement,
@@ -11,10 +11,30 @@ import {
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import OrderDetails from "../OrderDetails/OrderDetails";
+import { burgerContext } from "../context/burgerContext";
+import { orderContext } from "../context/orderContext";
 
-const BurgerConstructor = ({ data }) => {
-  const firstCard = data[0];
-  const defaultCard = data.slice(1, -1);
+const BurgerConstructor = () => {
+  const burger = useContext(burgerContext);
+
+  const firstCard = burger[0];
+  const defaultCard = burger.slice(1, -1);
+
+  const [numberState, setNumberState] = useState({});
+
+  const totalPrice = burger
+    .map((item) => item.price)
+    .reduce((sum, current) => {
+      return sum + current;
+    }, 0);
+
+  const handleOnclick = () => {
+    makeAnOrder()
+      .then((data) => setNumberState(data.order))
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const [isModalePopupOpen, setIsModalePopupOpen] = useState(false);
 
@@ -50,7 +70,7 @@ const BurgerConstructor = ({ data }) => {
       </div>
       <div className={BurgerConstructorStyles.info}>
         <div className={BurgerConstructorStyles.priceGroup}>
-          <p className="text text_type_digits-medium">610</p>
+          <p className="text text_type_digits-medium">{totalPrice}</p>
           <img src={Subtract} alt="картинка кристала" />
         </div>
         <Button
@@ -58,20 +78,19 @@ const BurgerConstructor = ({ data }) => {
           type="primary"
           size="large"
           onClick={() => {
+            handleOnclick();
             setIsModalePopupOpen(true);
           }}>
           Оформить заказ
         </Button>
       </div>
       <Modal isOpen={isModalePopupOpen} onClose={() => setIsModalePopupOpen(false)}>
-        <OrderDetails />
+        <orderContext.Provider value={numberState}>
+          <OrderDetails />
+        </orderContext.Provider>
       </Modal>
     </section>
   );
-};
-
-BurgerConstructor.propTypes = {
-  data: PropTypes.arrayOf(ingredientPropTypes).isRequired,
 };
 
 export default BurgerConstructor;

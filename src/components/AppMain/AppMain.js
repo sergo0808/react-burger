@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
+import { useReducer } from "react";
 import AppMainStyles from "./AppMain.module.css";
 import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import { ingredientPropTypes } from "../../utils/types";
+import { burgerContext } from "../context/burgerContext";
 
 const AppMain = ({ data }) => {
   return (
@@ -10,7 +12,9 @@ const AppMain = ({ data }) => {
       {data.length && (
         <>
           <BurgerIngredients data={data} />
-          <BurgerConstructor data={data} />
+          <burgerContext.Provider value={data}>
+            <BurgerConstructor />
+          </burgerContext.Provider>
         </>
       )}
     </main>
