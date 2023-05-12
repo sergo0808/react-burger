@@ -7,14 +7,12 @@ import { ingredientPropTypes } from "../../utils/types";
 import { burgerContext } from "../context/burgerContext";
 
 const AppMain = ({ data }) => {
-  const burger = data;
-
   return (
     <main className={AppMainStyles.main}>
       {data.length && (
         <>
           <BurgerIngredients data={data} />
-          <burgerContext.Provider value={burger}>
+          <burgerContext.Provider value={data}>
             <BurgerConstructor />
           </burgerContext.Provider>
         </>
