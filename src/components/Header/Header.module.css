@@ -1,0 +1,26 @@
+.header {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width: 100%;
+  display: flex;
+  max-width: 1280px;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 62px;
+  margin-right: 148px;
+}
+
+.acount {
+  margin-left: auto;
+  margin-right: 57px;
+}
+
+.link {
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+}
