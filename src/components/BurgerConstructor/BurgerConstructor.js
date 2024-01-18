@@ -1,5 +1,6 @@
 import React from "react";
 import BurgerConstructorStyles from "./BurgerConstructor.module.css";
+import PropTypes from "prop-types";
 import {
   ConstructorElement,
   DragIcon,
@@ -26,7 +27,7 @@ const BurgerConstructor = () => {
 
       <ul className={BurgerConstructorStyles.lists}>
         {mains.map((main) => (
-          <li className={BurgerConstructorStyles.cardContainer}>
+          <li className={BurgerConstructorStyles.cardContainer} key={main._id}>
             <DragIcon />
             <ConstructorElement text={main.name} price={main.price} thumbnail={main.image} />
           </li>
@@ -50,6 +51,10 @@ const BurgerConstructor = () => {
       </div>
     </section>
   );
+};
+BurgerConstructor.propTypes = {
+  text: PropTypes.string,
+  name: PropTypes.string,
 };
 
 export default BurgerConstructor;

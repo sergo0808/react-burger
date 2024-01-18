@@ -2,6 +2,7 @@ import React from "react";
 import BurgerIngredientsStyle from "./BurgerIngredients.module.css";
 import { Tab, CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
 import { data } from "../../utils/data";
+import PropTypes from "prop-types";
 
 const BurgerIngredients = () => {
   const [current, setCurrent] = React.useState("Булки");
@@ -31,7 +32,7 @@ const BurgerIngredients = () => {
           <div className={BurgerIngredientsStyle.cardsLists}>
             {buns &&
               buns.map((bun) => (
-                <article className={BurgerIngredientsStyle.card}>
+                <article className={BurgerIngredientsStyle.card} key={bun._id}>
                   <Counter count={1} size="default" />
                   <img src={bun.image} alt={bun.name} />
                   <div className={BurgerIngredientsStyle.priceGroup}>
@@ -49,7 +50,7 @@ const BurgerIngredients = () => {
           <div className={BurgerIngredientsStyle.cardsLists}>
             {sauces &&
               sauces.map((sauce) => (
-                <article className={BurgerIngredientsStyle.card}>
+                <article className={BurgerIngredientsStyle.card} key={sauce._id}>
                   <img src={sauce.image} alt={sauce.name} />
                   <div className={BurgerIngredientsStyle.priceGroup}>
                     <p className="text text_type_digits-default">{sauce.price}</p>
@@ -65,7 +66,7 @@ const BurgerIngredients = () => {
           <div className={BurgerIngredientsStyle.cardsLists}>
             {mains &&
               mains.map((main) => (
-                <article className={BurgerIngredientsStyle.card}>
+                <article className={BurgerIngredientsStyle.card} key={main._id}>
                   <img src={main.image} alt={main.name} />
                   <div className={BurgerIngredientsStyle.priceGroup}>
                     <p className="text text_type_digits-default">{main.price}</p>
@@ -79,6 +80,10 @@ const BurgerIngredients = () => {
       </ul>
     </section>
   );
+};
+BurgerIngredients.propTypes = {
+  text: PropTypes.string,
+  name: PropTypes.string,
 };
 
 export default BurgerIngredients;
