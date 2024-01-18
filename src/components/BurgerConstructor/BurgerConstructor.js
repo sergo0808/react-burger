@@ -52,9 +52,5 @@ const BurgerConstructor = () => {
     </section>
   );
 };
-BurgerConstructor.propTypes = {
-  text: PropTypes.string,
-  name: PropTypes.string,
-};
 
 export default BurgerConstructor;
