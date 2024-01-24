@@ -1,14 +1,14 @@
 import React from "react";
 import BurgerIngredientsStyle from "./BurgerIngredients.module.css";
-import { Tab, CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
-import { data } from "../../utils/data";
+import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
+import Card from "../Card/Card";
 
-const BurgerIngredients = () => {
+const BurgerIngredients = ({ data, onOpenDetails, onSelectCard }) => {
   const [current, setCurrent] = React.useState("Булки");
-  const buns = data.filter((item) => item.type === "bun");
-  const sauces = data.filter((item) => item.type === "sauce");
-  const mains = data.filter((item) => item.type === "main");
+  const buns = data.data.filter((item) => item.type === "bun");
+  const sauces = data.data.filter((item) => item.type === "sauce");
+  const mains = data.data.filter((item) => item.type === "main");
 
   return (
     <section className={BurgerIngredientsStyle.burgerIngridients}>
@@ -32,15 +32,15 @@ const BurgerIngredients = () => {
           <div className={BurgerIngredientsStyle.cardsLists}>
             {buns &&
               buns.map((bun) => (
-                <article className={BurgerIngredientsStyle.card} key={bun._id}>
-                  <Counter count={1} size="default" />
-                  <img src={bun.image} alt={bun.name} />
-                  <div className={BurgerIngredientsStyle.priceGroup}>
-                    <p className="text text_type_digits-default">{bun.price}</p>
-                    <CurrencyIcon type="primary" />
-                  </div>
-                  <p className="text text_type_main-default">{bun.name}</p>
-                </article>
+                <Card
+                  key={bun._id}
+                  onSelectCard={onSelectCard}
+                  card={bun}
+                  image={bun.image}
+                  name={bun.name}
+                  price={bun.price}
+                  onOpenDetails={onOpenDetails}
+                />
               ))}
           </div>
         </li>
@@ -50,14 +50,15 @@ const BurgerIngredients = () => {
           <div className={BurgerIngredientsStyle.cardsLists}>
             {sauces &&
               sauces.map((sauce) => (
-                <article className={BurgerIngredientsStyle.card} key={sauce._id}>
-                  <img src={sauce.image} alt={sauce.name} />
-                  <div className={BurgerIngredientsStyle.priceGroup}>
-                    <p className="text text_type_digits-default">{sauce.price}</p>
-                    <CurrencyIcon type="primary" />
-                  </div>
-                  <p className="text text_type_main-default">{sauce.name}</p>
-                </article>
+                <Card
+                  key={sauce._id}
+                  onSelectCard={onSelectCard}
+                  card={sauce}
+                  image={sauce.image}
+                  name={sauce.name}
+                  price={sauce.price}
+                  onOpenDetails={onOpenDetails}
+                />
               ))}
           </div>
         </li>
@@ -66,14 +67,15 @@ const BurgerIngredients = () => {
           <div className={BurgerIngredientsStyle.cardsLists}>
             {mains &&
               mains.map((main) => (
-                <article className={BurgerIngredientsStyle.card} key={main._id}>
-                  <img src={main.image} alt={main.name} />
-                  <div className={BurgerIngredientsStyle.priceGroup}>
-                    <p className="text text_type_digits-default">{main.price}</p>
-                    <CurrencyIcon type="primary" />
-                  </div>
-                  <p className="text text_type_main-default">{main.name}</p>
-                </article>
+                <Card
+                  key={main._id}
+                  onSelectCard={onSelectCard}
+                  card={main}
+                  image={main.image}
+                  name={main.name}
+                  price={main.price}
+                  onOpenDetails={onOpenDetails}
+                />
               ))}
           </div>
         </li>
@@ -83,7 +85,7 @@ const BurgerIngredients = () => {
 };
 BurgerIngredients.propTypes = {
   text: PropTypes.string,
-  name: PropTypes.string,
+  name: PropTypes.number,
 };
 
 export default BurgerIngredients;
