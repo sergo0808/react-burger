@@ -14,10 +14,10 @@ const Main = ({ data, onOpenOrder, onOpenDetails, onSelectCard }) => {
 
 Main.propTypes = {
   data: PropTypes.shape({
-    image: PropTypes.string,
-    name: PropTypes.string,
-    price: PropTypes.number,
-    _id: PropTypes.string,
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    _id: PropTypes.string.isRequired,
   }),
   onOpenDetails: PropTypes.func,
   onSelectCard: PropTypes.func,

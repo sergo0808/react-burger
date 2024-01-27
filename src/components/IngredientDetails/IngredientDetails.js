@@ -36,11 +36,11 @@ const IngredientDetails = ({ selectCard }) => {
 
 IngredientDetailsStyles.propTypes = {
   selectCard: PropTypes.shape({
-    name: PropTypes.string,
-    calories: PropTypes.number,
-    proteins: PropTypes.number,
-    fat: PropTypes.number,
-    carbohydrates: PropTypes.number,
+    name: PropTypes.string.isRequired,
+    calories: PropTypes.number.isRequired,
+    proteins: PropTypes.number.isRequired,
+    fat: PropTypes.number.isRequired,
+    carbohydrates: PropTypes.number.isRequired,
   }),
 };
 

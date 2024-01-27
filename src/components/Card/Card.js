@@ -22,14 +22,14 @@ const Card = ({ image, name, price, card, onSelectCard, onOpenDetails }) => {
 };
 
 Card.propTypes = {
-  name: PropTypes.string,
-  price: PropTypes.number,
-  image: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
   card: PropTypes.shape({
-    image: PropTypes.string,
-    name: PropTypes.string,
-    price: PropTypes.number,
-    _id: PropTypes.string,
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    _id: PropTypes.string.isRequired,
   }),
 };
 
