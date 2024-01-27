@@ -55,10 +55,10 @@ const BurgerConstructor = ({ data, onOpenOrder }) => {
 
 BurgerConstructor.propTypes = {
   data: PropTypes.shape({
-    image: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    _id: PropTypes.string.isRequired,
+    image: PropTypes.string,
+    name: PropTypes.string,
+    price: PropTypes.number,
+    _id: PropTypes.string,
   }),
   onOpenOrder: PropTypes.func,
 };
