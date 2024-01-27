@@ -55,9 +55,12 @@ const BurgerConstructor = ({ data, onOpenOrder }) => {
 
 BurgerConstructor.propTypes = {
   data: PropTypes.shape({
+    image: PropTypes.string,
     name: PropTypes.string,
     price: PropTypes.number,
+    _id: PropTypes.string,
   }),
+  onOpenOrder: PropTypes.func,
 };
 
 export default BurgerConstructor;

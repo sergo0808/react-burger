@@ -24,6 +24,13 @@ const Card = ({ image, name, price, card, onSelectCard, onOpenDetails }) => {
 Card.propTypes = {
   name: PropTypes.string,
   price: PropTypes.number,
+  image: PropTypes.string,
+  card: PropTypes.shape({
+    image: PropTypes.string,
+    name: PropTypes.string,
+    price: PropTypes.number,
+    _id: PropTypes.string,
+  }),
 };
 
 export default Card;

@@ -84,8 +84,14 @@ const BurgerIngredients = ({ data, onOpenDetails, onSelectCard }) => {
   );
 };
 BurgerIngredients.propTypes = {
-  text: PropTypes.string,
-  name: PropTypes.number,
+  data: PropTypes.shape({
+    image: PropTypes.string,
+    name: PropTypes.string,
+    price: PropTypes.number,
+    _id: PropTypes.string,
+  }),
+  onOpenDetails: PropTypes.func,
+  onSelectCard: PropTypes.func,
 };
 
 export default BurgerIngredients;

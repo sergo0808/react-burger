@@ -13,7 +13,15 @@ const Main = ({ data, onOpenOrder, onOpenDetails, onSelectCard }) => {
 };
 
 Main.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.shape({
+    image: PropTypes.string,
+    name: PropTypes.string,
+    price: PropTypes.number,
+    _id: PropTypes.string,
+  }),
+  onOpenDetails: PropTypes.func,
+  onSelectCard: PropTypes.func,
+  onOpenOrder: PropTypes.func,
 };
 
 export default Main;

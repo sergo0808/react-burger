@@ -3,12 +3,13 @@ import ModalStyles from "./Modal.module.css";
 import ModalOverlay from "../ModalOverlay/ModalOverlay";
 import { createPortal } from "react-dom";
 import { PropTypes } from "prop-types";
+import { ESCAPE_KEY } from "../../utils/data";
 
 const modals = document.getElementById("modals");
 
 const Modal = ({ children, title, onClose }) => {
   const handleListener = (e) => {
-    if (e.keyCode === 27 || e.target.id === "overlay") {
+    if (e.keyCode === ESCAPE_KEY || e.target.id === "overlay") {
       onClose();
     }
   };
@@ -39,6 +40,7 @@ const Modal = ({ children, title, onClose }) => {
 Modal.propTypes = {
   children: PropTypes.element,
   title: PropTypes.string,
+  onClose: PropTypes.func,
 };
 
 export default Modal;
