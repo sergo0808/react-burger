@@ -4,11 +4,11 @@ import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
 import Card from "../Card/Card";
 
-const BurgerIngredients = ({ data, onOpenDetails, onSelectCard }) => {
+const BurgerIngredients = ({ ingridients, onOpenDetails, onSelectCard }) => {
   const [current, setCurrent] = React.useState("Булки");
-  const buns = data.data.filter((item) => item.type === "bun");
-  const sauces = data.data.filter((item) => item.type === "sauce");
-  const mains = data.data.filter((item) => item.type === "main");
+  const buns = ingridients.filter((item) => item.type === "bun");
+  const sauces = ingridients.filter((item) => item.type === "sauce");
+  const mains = ingridients.filter((item) => item.type === "main");
 
   return (
     <section className={BurgerIngredientsStyle.burgerIngridients}>
@@ -84,12 +84,14 @@ const BurgerIngredients = ({ data, onOpenDetails, onSelectCard }) => {
   );
 };
 BurgerIngredients.propTypes = {
-  data: PropTypes.shape({
-    image: PropTypes.string,
-    name: PropTypes.string,
-    price: PropTypes.number,
-    _id: PropTypes.string,
-  }),
+  ingridients: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.string,
+      name: PropTypes.string,
+      price: PropTypes.number,
+      _id: PropTypes.string,
+    })
+  ),
   onOpenDetails: PropTypes.func,
   onSelectCard: PropTypes.func,
 };

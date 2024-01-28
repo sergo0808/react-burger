@@ -34,7 +34,7 @@ const App = () => {
         throw new Error("Bad response");
       }
       const data = await res.json();
-      setData(data);
+      setData(data.data);
     } catch (err) {
       console.warn(err);
     }
@@ -50,7 +50,7 @@ const App = () => {
         <>
           <Header />
           <Main
-            data={data}
+            ingridients={data}
             onOpenDetails={handleisOpenDetails}
             onOpenOrder={handleisOpenOrder}
             onClose={handleCloseModals}

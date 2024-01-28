@@ -9,9 +9,9 @@ import {
 
 import culon from "../../images/culon.png";
 
-const BurgerConstructor = ({ data, onOpenOrder }) => {
-  const mains = data.data.filter((item) => item.type === "main");
-  const burger = data.data.find((item) => item.name === "Краторная булка N-200i");
+const BurgerConstructor = ({ ingridients, onOpenOrder }) => {
+  const mains = ingridients.filter((item) => item.type === "main");
+  const burger = ingridients.find((item) => item.name === "Краторная булка N-200i");
 
   return (
     <section className={BurgerConstructorStyles.burgerConstructor}>
@@ -54,12 +54,14 @@ const BurgerConstructor = ({ data, onOpenOrder }) => {
 };
 
 BurgerConstructor.propTypes = {
-  data: PropTypes.shape({
-    image: PropTypes.string,
-    name: PropTypes.string,
-    price: PropTypes.number,
-    _id: PropTypes.string,
-  }),
+  ingridients: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.string,
+      name: PropTypes.string,
+      price: PropTypes.number,
+      _id: PropTypes.string,
+    })
+  ),
   onOpenOrder: PropTypes.func,
 };
 
