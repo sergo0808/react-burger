@@ -1,15 +1,33 @@
-import React from "react";
+import PropTypes from "prop-types";
 import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import MainStyles from "./Main.module.css";
 
-const Main = () => {
+const Main = ({ ingridients, onOpenOrder, onOpenDetails, onSelectCard }) => {
   return (
     <main className={MainStyles.main}>
-      <BurgerIngredients />
-      <BurgerConstructor />
+      <BurgerIngredients
+        ingridients={ingridients}
+        onSelectCard={onSelectCard}
+        onOpenDetails={onOpenDetails}
+      />
+      <BurgerConstructor ingridients={ingridients} onOpenOrder={onOpenOrder} />
     </main>
   );
+};
+
+Main.propTypes = {
+  ingridients: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.string,
+      name: PropTypes.string,
+      price: PropTypes.number,
+      _id: PropTypes.string,
+    })
+  ),
+  onOpenDetails: PropTypes.func,
+  onSelectCard: PropTypes.func,
+  onOpenOrder: PropTypes.func,
 };
 
 export default Main;

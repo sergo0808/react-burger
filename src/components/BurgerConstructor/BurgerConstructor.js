@@ -6,12 +6,12 @@ import {
   DragIcon,
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import { data } from "../../utils/data";
+
 import culon from "../../images/culon.png";
 
-const BurgerConstructor = () => {
-  const mains = data.filter((item) => item.type === "main");
-  const burger = data.find((item) => item.name === "Краторная булка N-200i");
+const BurgerConstructor = ({ ingridients, onOpenOrder }) => {
+  const mains = ingridients.filter((item) => item.type === "main");
+  const burger = ingridients.find((item) => item.name === "Краторная булка N-200i");
 
   return (
     <section className={BurgerConstructorStyles.burgerConstructor}>
@@ -45,12 +45,24 @@ const BurgerConstructor = () => {
       <div className={BurgerConstructorStyles.priceGroup}>
         <p className="text text_type_digits-medium">610</p>
         <img src={culon} alt="Кулон" className={BurgerConstructorStyles.culon}></img>
-        <Button htmlType="button" type="primary" size="large">
+        <Button htmlType="button" type="primary" size="large" onClick={onOpenOrder}>
           Оформить заказ
         </Button>
       </div>
     </section>
   );
+};
+
+BurgerConstructor.propTypes = {
+  ingridients: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.string,
+      name: PropTypes.string,
+      price: PropTypes.number,
+      _id: PropTypes.string,
+    })
+  ),
+  onOpenOrder: PropTypes.func,
 };
 
 export default BurgerConstructor;
