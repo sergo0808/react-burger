@@ -22,7 +22,6 @@ Main.propTypes = {
       image: PropTypes.string,
       name: PropTypes.string,
       price: PropTypes.number,
-      _id: PropTypes.string,
     })
   ),
   onOpenDetails: PropTypes.func,
