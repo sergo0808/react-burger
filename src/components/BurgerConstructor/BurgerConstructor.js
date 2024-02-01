@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import BurgerConstructorStyles from "./BurgerConstructor.module.css";
 import PropTypes from "prop-types";
 import {
@@ -8,10 +8,22 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import culon from "../../images/culon.png";
+import Modal from "../Modal/Modal";
+import OrderDetails from "../OrderDetails/OrderDetails";
+import { ConstrucrtorContext } from "../../services/ConstrucrtorContext";
+import { SummaContext } from "../../services/SummaContext";
 
-const BurgerConstructor = ({ ingridients, onOpenOrder }) => {
-  const mains = ingridients.filter((item) => item.type === "main");
-  const burger = ingridients.find((item) => item.name === "Краторная булка N-200i");
+const BurgerConstructor = ({ onOpenOrder, isOpenOrder, onClose, onCreateOrders }) => {
+  const ingredients = useContext(ConstrucrtorContext);
+  const mains = ingredients.filter((item) => item.type === "main");
+  const burger = ingredients.find((item) => item.name === "Краторная булка N-200i");
+  const totalPrice =
+    mains.map((item) => item.price).reduce((acc, curr) => acc + curr, 0) + burger.price * 2;
+
+  const handleClick = () => {
+    onOpenOrder();
+    onCreateOrders(mains);
+  };
 
   return (
     <section className={BurgerConstructorStyles.burgerConstructor}>
@@ -19,8 +31,8 @@ const BurgerConstructor = ({ ingridients, onOpenOrder }) => {
         <ConstructorElement
           type="top"
           isLocked={true}
-          text="Краторная булка N-200i (верх)"
-          price={200}
+          text={`${burger.name} (верх)`}
+          price={burger.price}
           thumbnail={burger.image}
         />
       </div>
@@ -37,18 +49,25 @@ const BurgerConstructor = ({ ingridients, onOpenOrder }) => {
         <ConstructorElement
           type="bottom"
           isLocked={true}
-          text="Краторная булка N-200i (низ)"
-          price={200}
+          text={`${burger.name} (низ)`}
+          price={burger.price}
           thumbnail={burger.image}
         />
       </div>
       <div className={BurgerConstructorStyles.priceGroup}>
-        <p className="text text_type_digits-medium">610</p>
+        <p className="text text_type_digits-medium">{totalPrice}</p>
         <img src={culon} alt="Кулон" className={BurgerConstructorStyles.culon}></img>
-        <Button htmlType="button" type="primary" size="large" onClick={onOpenOrder}>
+        <Button htmlType="button" type="primary" size="large" onClick={handleClick}>
           Оформить заказ
         </Button>
       </div>
+      {isOpenOrder && (
+        <Modal onClose={onClose}>
+          <SummaContext.Provider value={totalPrice}>
+            <OrderDetails />
+          </SummaContext.Provider>
+        </Modal>
+      )}
     </section>
   );
 };
