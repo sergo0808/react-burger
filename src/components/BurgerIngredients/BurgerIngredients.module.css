@@ -17,9 +17,7 @@
   flex-direction: column;
   max-height: 78vh;
   overflow-y: scroll;
-}
-.burgerLists::-webkit-scrollbar {
-  width: 8px;
+  scrollbar-width: thin;
 }
 
 .burgerLists::-webkit-scrollbar-track {

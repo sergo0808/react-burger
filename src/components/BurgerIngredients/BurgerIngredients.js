@@ -3,12 +3,21 @@ import BurgerIngredientsStyle from "./BurgerIngredients.module.css";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
 import Card from "../Card/Card";
+import IngredientDetails from "../IngredientDetails/IngredientDetails";
+import Modal from "../Modal/Modal";
 
-const BurgerIngredients = ({ ingridients, onOpenDetails, onSelectCard }) => {
+const BurgerIngredients = ({
+  ingredients,
+  onOpenDetails,
+  onSelectCard,
+  isOpenDetails,
+  onClose,
+  selectCard,
+}) => {
   const [current, setCurrent] = React.useState("Булки");
-  const buns = ingridients.filter((item) => item.type === "bun");
-  const sauces = ingridients.filter((item) => item.type === "sauce");
-  const mains = ingridients.filter((item) => item.type === "main");
+  const buns = ingredients.filter((item) => item.type === "bun");
+  const sauces = ingredients.filter((item) => item.type === "sauce");
+  const mains = ingredients.filter((item) => item.type === "main");
 
   return (
     <section className={BurgerIngredientsStyle.burgerIngridients}>
@@ -80,11 +89,16 @@ const BurgerIngredients = ({ ingridients, onOpenDetails, onSelectCard }) => {
           </div>
         </li>
       </ul>
+      {isOpenDetails && (
+        <Modal title="Детали ингредиента" onClose={onClose}>
+          <IngredientDetails selectCard={selectCard} />
+        </Modal>
+      )}
     </section>
   );
 };
 BurgerIngredients.propTypes = {
-  ingridients: PropTypes.arrayOf(
+  ingredients: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.string,
       name: PropTypes.string,

@@ -2,22 +2,44 @@ import PropTypes from "prop-types";
 import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import MainStyles from "./Main.module.css";
+import { ConstrucrtorContext } from "../../services/ConstrucrtorContext";
 
-const Main = ({ ingridients, onOpenOrder, onOpenDetails, onSelectCard }) => {
+const Main = ({
+  ingredients,
+  onOpenOrder,
+  onOpenDetails,
+  onSelectCard,
+  onClose,
+  isOpenOrder,
+  isOpenDetails,
+  selectCard,
+  onCreateOrders,
+}) => {
   return (
     <main className={MainStyles.main}>
       <BurgerIngredients
-        ingridients={ingridients}
+        ingredients={ingredients}
         onSelectCard={onSelectCard}
         onOpenDetails={onOpenDetails}
+        isOpenDetails={isOpenDetails}
+        selectCard={selectCard}
+        onClose={onClose}
       />
-      <BurgerConstructor ingridients={ingridients} onOpenOrder={onOpenOrder} />
+      <ConstrucrtorContext.Provider value={ingredients}>
+        <BurgerConstructor
+          onCreateOrders={onCreateOrders}
+          ingredients={ingredients}
+          onOpenOrder={onOpenOrder}
+          onClose={onClose}
+          isOpenOrder={isOpenOrder}
+        />
+      </ConstrucrtorContext.Provider>
     </main>
   );
 };
 
 Main.propTypes = {
-  ingridients: PropTypes.arrayOf(
+  ingredients: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.string,
       name: PropTypes.string,
